@@ -6,10 +6,10 @@ const app = express()
 
 connectDB()
 
+const productRoutes = require('./router/product')
+
 app.use(morgan('dev'))
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.use(`/api`, productRoutes)
 
 module.exports = app
