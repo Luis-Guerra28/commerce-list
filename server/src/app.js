@@ -9,6 +9,7 @@ connectDB()
 const productRoutes = require('./router/product')
 
 app.use(morgan('dev'))
+app.use(express.json())
 
 app.use(`/api`, productRoutes)
 

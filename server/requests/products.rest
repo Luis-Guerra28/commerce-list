@@ -1,0 +1,35 @@
+GET http://localhost:8000/api/products
+
+###
+
+POST http://localhost:8000/api/products
+content-type: application/json
+
+{
+    "name": "Pa Borrar",
+    "cost": 0,
+    "units": 10,
+    "supplier": "",
+    "category": "",
+    "status": "",
+    "descrption": ""
+}
+
+###
+
+PUT http://localhost:8000/api/products/68c79026425ab501f814d9c3
+content-type: application/json
+
+{
+    "name": "Test de edicion",
+    "cost": 5,
+    "units": 10,
+    "supplier": "",
+    "category": "",
+    "status": "",
+    "descrption": ""
+}
+
+###
+
+DELETE http://localhost:8000/api/products/68c79f3a0d7155d02bb88bd7
