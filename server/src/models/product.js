@@ -37,10 +37,11 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  unitCost: Number
 })
 
-productSchema.pre('save', (next) => {
-  this.unitCost = this.cost / this.units
+productSchema.pre('save', function (next) {
+  this.unitCost = Number(this.cost) / Number(this.units)
   next()
 })
 
