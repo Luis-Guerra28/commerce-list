@@ -1,6 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const connectDB = require('./config/db')
+const cors = require('cors')
 
 const app = express()
 
@@ -8,8 +9,8 @@ connectDB()
 
 const productRoutes = require('./router/product')
 
+app.use(cors())
 app.use(express.json())
-
 morgan.token('body', (req, res) => {
   return JSON.stringify(req.body)
 })
