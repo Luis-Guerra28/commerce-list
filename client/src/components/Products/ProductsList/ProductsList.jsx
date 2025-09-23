@@ -96,7 +96,7 @@ const columns = [
           <Button onClick={onEdit}>
             Editar
           </Button>
-          <Button onclick={onDelete}>
+          <Button onClick={onDelete}>
             Eliminar
           </Button>
         </>
@@ -138,7 +138,6 @@ export function ProductsList() {
           sx={{ border: 0 }}
         />
       </Paper>
-      <Modal />
     </>
   );
 }
