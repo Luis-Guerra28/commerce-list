@@ -78,8 +78,6 @@ const columns = [
     width: '200',
     sortable: false,
     renderCell: (params) => {
-      console.log(params);
-
       const onEdit = (e) => {
         e.stopPropagation()
         console.log('Editando', params.row)
