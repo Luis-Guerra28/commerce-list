@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button } from '@mui/material'
-import { ProductsList } from './components/Products'
+import { ProductsForm, ProductsList } from './components/Products'
 import { FormModal } from './components/FormModal'
 import './App.css'
 
@@ -26,7 +26,11 @@ function App() {
       <FormModal
         open={open}
         handleCloseModal={handleCloseModal}
-      />
+      >
+        <ProductsForm
+          handleCloseModal={handleCloseModal}
+        />
+      </FormModal>
     </main>
   )
 }

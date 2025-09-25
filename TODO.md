@@ -1,5 +1,7 @@
 # Lista de Tareas del Proyecto
 
-- [ ] Crear componente de formulario
+- [x] Crear componente de formulario
+- [ ] Lograr que el componente TextField 'unitCost' calcule el costo unitario
 - [ ] Añadir funiconalidad a los botones de borrar y editar
-- [ ] Agregar a la base de datos reales
+- [ ] Agregar a la BD datos reales
+- [ ]
