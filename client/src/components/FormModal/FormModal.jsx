@@ -6,11 +6,11 @@ import {
 
 
 export function FormModal(props) {
-  const { handleCloseModal, open, children } = props
+  const { handleCloseModal, open, title, children } = props
 
   return (
     <Dialog open={open} onClose={handleCloseModal}>
-      <DialogTitle>Crear Producto</DialogTitle>
+      <DialogTitle>{title}</DialogTitle>
       <DialogContent>
         {children}
       </DialogContent>

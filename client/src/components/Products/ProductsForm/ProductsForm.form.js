@@ -10,12 +10,14 @@ export const validationSchema = Yup.object({
   description: Yup.string(),
 })
 
-export const initialValues = {
-  name: '',
-  cost: '',
-  units: '',
-  supplier: '',
-  category: '',
-  status: '',
-  description: '',
+export const getInitialValues = (product) => {
+  return {
+    name: product?.name || '',
+    cost: product?.cost || '',
+    units: product?.units || '',
+    supplier: product?.supplier || '',
+    category: product?.category || '',
+    status: product?.status || '',
+    description: product?.description || '',
+  }
 }

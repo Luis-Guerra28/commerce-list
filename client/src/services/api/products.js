@@ -24,4 +24,24 @@ export class Products {
       console.error(error)
     }
   }
+
+  async updateProduct(product, id) {
+    try {
+      const url = `${this.baseApi}/${ENV.API_ROUTES.PRODUCTS}/${id}`
+      const response = await axios.put(url, product)
+      return response.data
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async deleteProduct(id) {
+    try {
+      const url = `${this.baseApi}/${ENV.API_ROUTES.PRODUCTS}/${id}`
+      const response = await axios.delete(url)
+      return response
+    } catch (error) {
+      console.error(error)
+    }
+  }
 }

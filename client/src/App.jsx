@@ -29,10 +29,11 @@ function App() {
         </Button>
       </div>
 
-      <ProductsList refreshTrigger={refreshTrigger} />
+      <ProductsList refreshTrigger={refreshTrigger} activateRefresh={activateRefresh} />
       <FormModal
         open={open}
         handleCloseModal={handleCloseModal}
+        title='Crear Producto'
       >
         <ProductsForm
           handleCloseModal={handleCloseModal}
