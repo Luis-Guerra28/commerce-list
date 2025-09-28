@@ -6,13 +6,6 @@ import { Products } from '../../../services/api/products';
 
 const productsController = new Products()
 
-
-//MODAL PARA LOS FORMULARIOS EN GENERAL
-//BOTON Y FORMULARIO PARA AGREGAR ELEMENTO
-//FORMULARIO PARA EDITAR
-
-
-
 function createData(product) {
   const {
     name,
@@ -106,13 +99,14 @@ const columns = [
 
 const paginationModel = { page: 0, pageSize: 5 };
 
-export function ProductsList() {
-
+export function ProductsList(props) {
   const [products, setProducts] = useState(null)
+  const { refreshTrigger } = props
+  //const [refreshTrigger, setRefreshTrigger] = useState(0)
+
 
   useEffect(() => {
     (async () => {
-
       try {
         const response = await productsController.getProducts()
         setProducts(response)
@@ -121,7 +115,9 @@ export function ProductsList() {
         throw error
       }
     })()
-  }, [])
+  }, [refreshTrigger])
+
+
 
   const rows = map(products, (product) => (createData(product)))
 

@@ -14,4 +14,14 @@ export class Products {
       throw error
     }
   }
+
+  async createProduct(product) {
+    try {
+      const url = `${this.baseApi}/${ENV.API_ROUTES.PRODUCTS}`
+      const response = await axios.post(url, product)
+      return response.data
+    } catch (error) {
+      console.error(error)
+    }
+  }
 }

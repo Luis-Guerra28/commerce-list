@@ -2,14 +2,19 @@ import React from 'react'
 import { Button, TextField, DialogActions, Box } from '@mui/material'
 import { useFormik } from 'formik'
 import { validationSchema, initialValues } from './ProductsForm.form'
+import { Products } from '../../../services/api/products'
+
+const productsController = new Products()
 
 export function ProductsForm(props) {
-  const { handleCloseModal } = props
+  const { handleCloseModal, activateRefresh } = props
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (formValues) => {
-      console.log('Enviando:', formValues)
+    onSubmit: async (formValues) => {
+      await productsController.createProduct(formValues)
+      activateRefresh()
+      handleCloseModal()
     }
   })
 

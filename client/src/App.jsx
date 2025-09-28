@@ -6,8 +6,15 @@ import './App.css'
 
 function App() {
   const [open, setOpen] = useState(false)
+
   const handleOpenModal = () => setOpen(true)
   const handleCloseModal = () => setOpen(false)
+
+  const [refreshTrigger, setRefreshTrigger] = useState(0)
+
+  const activateRefresh = () => {
+    setRefreshTrigger(prev => prev + 1)
+  }
 
   return (
     <main className='main-container'>
@@ -22,13 +29,14 @@ function App() {
         </Button>
       </div>
 
-      <ProductsList />
+      <ProductsList refreshTrigger={refreshTrigger} />
       <FormModal
         open={open}
         handleCloseModal={handleCloseModal}
       >
         <ProductsForm
           handleCloseModal={handleCloseModal}
+          activateRefresh={activateRefresh}
         />
       </FormModal>
     </main>
