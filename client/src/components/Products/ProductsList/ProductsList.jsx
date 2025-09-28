@@ -102,8 +102,6 @@ const paginationModel = { page: 0, pageSize: 5 };
 export function ProductsList(props) {
   const [products, setProducts] = useState(null)
   const { refreshTrigger } = props
-  //const [refreshTrigger, setRefreshTrigger] = useState(0)
-
 
   useEffect(() => {
     (async () => {
