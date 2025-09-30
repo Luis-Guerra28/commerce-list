@@ -34,8 +34,6 @@ function createData(product) {
   };
 }
 
-const paginationModel = { page: 0, pageSize: 5 };
-
 export function ProductsList(props) {
   const { refreshTrigger, activateRefresh } = props
 
@@ -154,9 +152,6 @@ export function ProductsList(props) {
         <DataGrid
           rows={rows}
           columns={columns}
-          initialState={{ pagination: { paginationModel } }}
-          pageSizeOptions={[5, 10]}
-          sx={{ border: 0 }}
         />
       </Paper>
       <FormModal
