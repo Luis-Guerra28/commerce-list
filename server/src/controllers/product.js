@@ -80,7 +80,6 @@ const bulkLoadFromCsvString = async (req, res) => {
       }
     })
 
-    console.log(productsArray)
     const result = await Product.insertMany(cleanProductArray)
 
     return res.status(200).send({
