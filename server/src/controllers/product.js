@@ -1,3 +1,4 @@
+const csv = require('csvtojson')
 const Product = require('../models/product')
 
 const createProduct = async (req, res) => {
@@ -56,9 +57,45 @@ const deleteProduct = async (req, res) => {
   }
 }
 
+const bulkLoadFromCsvString = async (req, res) => {
+  const csvString = req.body
+
+  if (!csvString || csvString === 0) {
+    return res.status(400).send({ message: 'El cuerpo de la peticion está vacío.' })
+  }
+
+  try {
+    const converter = csv({
+      includeColumns: /^(name|cost|units|supplier|category|status|descrption)$/i
+    })
+
+    const productsArray = await converter.fromString(csvString)
+
+    const cleanProductArray = productsArray.map(product => {
+      const cleanCostString = product.cost.replace('$', '').trim()
+
+      return {
+        ...product,
+        cost: parseFloat(cleanCostString)
+      }
+    })
+
+    console.log(productsArray)
+    const result = await Product.insertMany(cleanProductArray)
+
+    return res.status(200).send({
+      message: `${result.length} productos insertados con éxito.`,
+      count: result.length,
+    })
+  } catch (error) {
+    return res.status(500).send({ message: `Error en la inserción masiva en DB.\n${error}` });
+  }
+}
+
 module.exports = {
   createProduct,
   getProducts,
   updateProduct,
   deleteProduct,
+  bulkLoadFromCsvString,
 }

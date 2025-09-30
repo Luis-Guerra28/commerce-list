@@ -11,6 +11,7 @@ const productRoutes = require('./router/product')
 
 app.use(cors())
 app.use(express.json())
+app.use(express.text({ type: 'text/csv' }))
 morgan.token('body', (req, res) => {
   return JSON.stringify(req.body)
 })
