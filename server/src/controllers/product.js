@@ -66,17 +66,25 @@ const bulkLoadFromCsvString = async (req, res) => {
 
   try {
     const converter = csv({
-      includeColumns: /^(name|cost|units|supplier|category|status|descrption)$/i
+      includeColumns: /^(name|cost|units|supplier|category|status|descrption])$/i
     })
 
     const productsArray = await converter.fromString(csvString)
 
     const cleanProductArray = productsArray.map(product => {
-      const cleanCostString = product.cost.replace('$', '').trim()
+      const cleanCost = parseFloat(product.cost.replace('$', '').trim())
+      const units = parseFloat(product.units)
+
+      const rawUnitCost =
+        (cleanCost > 0 && units > 0)
+          ? (cleanCost / units)
+          : 0
 
       return {
         ...product,
-        cost: parseFloat(cleanCostString)
+        cost: cleanCost,
+        units: units,
+        unitCost: parseFloat(rawUnitCost.toFixed(4))
       }
     })
 
