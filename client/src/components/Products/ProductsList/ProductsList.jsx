@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Paper, Button, DialogContent, DialogContentText, DialogActions } from '@mui/material'
+import {
+  Paper,
+  Button,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  IconButton
+} from '@mui/material'
+import { Delete, Edit } from '@mui/icons-material'
 import { map } from 'lodash'
 import { Products } from '../../../services/api/products';
 import { ProductsForm } from '../ProductsForm';
@@ -134,12 +142,12 @@ export function ProductsList(props) {
 
         return (
           <>
-            <Button onClick={onEdit}>
-              Editar
-            </Button>
-            <Button onClick={onDelete}>
-              Eliminar
-            </Button>
+            <IconButton onClick={onEdit}>
+              <Edit />
+            </IconButton>
+            <IconButton onClick={onDelete}>
+              <Delete />
+            </IconButton>
           </>
         )
       }
