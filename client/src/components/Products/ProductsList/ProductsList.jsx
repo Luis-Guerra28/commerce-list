@@ -10,6 +10,7 @@ import {
 } from '@mui/material'
 import { Delete, Edit } from '@mui/icons-material'
 import { map } from 'lodash'
+import { getProductsColumns } from './productColumns'
 import { Products } from '../../../services/api/products';
 import { ProductsForm } from '../ProductsForm';
 import { BasicModal } from '../../BasicModal';
@@ -90,69 +91,7 @@ export function ProductsList(props) {
 
   const rows = map(products, (product) => (createData(product)))
 
-  const columns = [
-    {
-      field: 'name',
-      headerName: 'Producto'
-    },
-    {
-      field: 'cost',
-      headerName: 'Costo'
-    },
-    {
-      field: 'units',
-      headerName: 'Unidades'
-    },
-    {
-      field: 'supplier',
-      headerName: 'Proveedor'
-    },
-    {
-      field: 'category',
-      headerName: 'Categoria'
-    },
-    {
-      field: 'status',
-      headerName: 'Estatus'
-    },
-    {
-      field: 'description',
-      headerName: 'Descipción'
-    },
-    {
-      field: 'unitCost',
-      headerName: 'Costo unitario'
-    },
-    {
-      field: 'actions',
-      headerName: 'Acciones',
-      width: '200',
-      sortable: false,
-      renderCell: (params) => {
-        const onEdit = (e) => {
-          e.stopPropagation()
-          handleOpenEditingModal()
-          handleEditing(params.row)
-        }
-        const onDelete = async (e) => {
-          e.stopPropagation()
-          handleDelete(params.row)
-          console.log('Eliminando', params.row)
-        }
-
-        return (
-          <>
-            <IconButton onClick={onEdit}>
-              <Edit />
-            </IconButton>
-            <IconButton onClick={onDelete}>
-              <Delete />
-            </IconButton>
-          </>
-        )
-      }
-    }
-  ]
+  const columns = getProductsColumns(handleEditing, handleDelete)
 
   return (
     <>
