@@ -5,7 +5,7 @@ import {
 } from '@mui/material'
 
 
-export function FormModal(props) {
+export function BasicModal(props) {
   const { handleCloseModal, open, title, children } = props
 
   return (

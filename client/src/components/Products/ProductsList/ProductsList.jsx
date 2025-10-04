@@ -12,7 +12,7 @@ import { Delete, Edit } from '@mui/icons-material'
 import { map } from 'lodash'
 import { Products } from '../../../services/api/products';
 import { ProductsForm } from '../ProductsForm';
-import { FormModal } from '../../FormModal';
+import { BasicModal } from '../../BasicModal';
 
 const productsController = new Products()
 
@@ -162,7 +162,7 @@ export function ProductsList(props) {
           columns={columns}
         />
       </Paper>
-      <FormModal
+      <BasicModal
         open={openFormModal}
         handleCloseModal={handleCloseEditingModal}
         title='Editar producto'
@@ -172,13 +172,12 @@ export function ProductsList(props) {
           handleCloseModal={handleCloseEditingModal}
           activateRefresh={activateRefresh}
         />
-      </FormModal>
-      <FormModal
+      </BasicModal>
+      <BasicModal
         open={openDeleteModal}
         handleCloseModal={handleCloseDeleteModal}
         title='Eliminar producto'
       >
-
         <DialogContent>
           <DialogContentText>
             Esta seguro que desea borrar el producto:
@@ -191,8 +190,7 @@ export function ProductsList(props) {
             Confimar
           </Button>
         </DialogActions>
-
-      </FormModal >
+      </BasicModal >
     </>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button } from '@mui/material'
 import { ProductsForm, ProductsList } from './components/Products'
-import { FormModal } from './components/FormModal'
+import { BasicModal } from './components/BasicModal'
 import './App.css'
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
       </div>
 
       <ProductsList refreshTrigger={refreshTrigger} activateRefresh={activateRefresh} />
-      <FormModal
+      <BasicModal
         open={open}
         handleCloseModal={handleCloseModal}
         title='Crear Producto'
@@ -39,7 +39,7 @@ function App() {
           handleCloseModal={handleCloseModal}
           activateRefresh={activateRefresh}
         />
-      </FormModal>
+      </BasicModal>
     </main>
   )
 }
