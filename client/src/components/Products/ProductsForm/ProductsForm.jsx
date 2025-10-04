@@ -9,9 +9,6 @@ const productsController = new Products()
 export function ProductsForm(props) {
   const { handleCloseModal, activateRefresh, product } = props
 
-  console.log(product);
-
-
   const formik = useFormik({
     initialValues: getInitialValues(product),
     validationSchema,
@@ -26,6 +23,13 @@ export function ProductsForm(props) {
       handleCloseModal()
     }
   })
+
+  const calculateUnitCost = () => {
+    const units = parseFloat(formik.values.units)
+    const cost = parseFloat(formik.values.cost)
+
+    return (cost / units).toFixed(4)
+  }
 
   return (
     <>
@@ -57,6 +61,7 @@ export function ProductsForm(props) {
             label='Costo unitario'
             name='unitCost'
             disabled
+            value={calculateUnitCost()}
           />
           <TextField
             label='Proveedor'
