@@ -9,11 +9,18 @@ export const getProductsColumns = (handleEditing, handleDelete) => [
   },
   {
     field: 'cost',
-    headerName: 'Costo'
+    headerName: 'Costo',
+    headerAlign: 'right',
+    align: 'right',
+    valueFormatter: (params) => {
+      return params.toFixed(2)
+    }
   },
   {
     field: 'units',
-    headerName: 'Unidades'
+    headerName: 'Unidades',
+    headerAlign: 'right',
+    align: 'right',
   },
   {
     field: 'supplier',
@@ -35,13 +42,20 @@ export const getProductsColumns = (handleEditing, handleDelete) => [
   },
   {
     field: 'unitCost',
-    headerName: 'Costo unitario'
+    headerName: 'Costo unitario',
+    headerAlign: 'right',
+    align: 'right',
+    valueFormatter: (params) => {
+      return params.toFixed(4)
+    }
   },
   {
     field: 'actions',
     headerName: 'Acciones',
     width: '200',
     sortable: false,
+    headerAlign: 'right',
+    align: 'right',
     renderCell: (params) => {
 
       return (
