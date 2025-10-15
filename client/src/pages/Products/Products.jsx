@@ -18,7 +18,7 @@ export function Products() {
 
 
   return (
-    <main className='main-container'>
+    <>
       <div className='product__top-container'>
         <h1>Productos</h1>
         <Button
@@ -41,6 +41,6 @@ export function Products() {
           activateRefresh={activateRefresh}
         />
       </BasicModal>
-    </main>
+    </>
   )
 }
