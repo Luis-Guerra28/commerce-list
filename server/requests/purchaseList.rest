@@ -1,0 +1,29 @@
+POST http://localhost:8000/api/purchaseList
+content-type: application/json
+
+{
+  "name": "test list purchase",
+  "totalCost": {{$randomInt 0 1000}},
+  "createdAt": {{$timestamp}},
+  "status": "Algo"
+}
+
+###
+
+GET http://localhost:8000/api/purchaseList
+
+
+###
+
+PUT http://localhost:8000/api/purchaseList/68f18693b87de88b55870b18
+Content-Type: application/json
+
+{
+  "name": "test edition list",
+  "status": "Otro Algo",
+  "totalCost": 99
+}
+
+###
+
+DELETE http://localhost:8000/api/purchaseList/68f1a140c86e16b6a91551ac

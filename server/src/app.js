@@ -8,6 +8,7 @@ const app = express()
 connectDB()
 
 const productRoutes = require('./router/product')
+const purchaseListRoutes = require('./router/purchaseList')
 
 app.use(cors())
 app.use(express.json())
@@ -18,5 +19,6 @@ morgan.token('body', (req, res) => {
 app.use(morgan('Method: :method\nRes: :status\nPath: :url\nBody: :body\n------ (:total-time[0]ms)'))
 
 app.use(`/api`, productRoutes)
+app.use(`/api`, purchaseListRoutes)
 
 module.exports = app
